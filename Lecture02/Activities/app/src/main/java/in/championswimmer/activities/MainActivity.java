@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String fullName = firstName + " " + lastName;
 
-                tvFullName.setText(fullName);
+                tvFullName.setText(String.valueOf(1));
 
             }
         });
