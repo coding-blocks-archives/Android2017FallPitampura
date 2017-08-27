@@ -2,7 +2,6 @@ package in.championswimmer.assignment.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 
 import in.championswimmer.assignment.R;
 import in.championswimmer.assignment.models.Center;
-import in.championswimmer.assignment.models.Course;
 
 /**
  * Created by championswimmer on 27/08/17.

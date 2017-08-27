@@ -1,10 +1,9 @@
 package in.championswimmer.assignment;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
 import in.championswimmer.assignment.activities.CenterListActivity;
 import in.championswimmer.assignment.activities.CourseListActivity;
