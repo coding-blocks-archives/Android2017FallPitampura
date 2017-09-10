@@ -11,4 +11,10 @@
         android:id="@+id/btnPosts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:text="USERS"
+        android:layout_gravity="right|top"
+        android:id="@+id/btnUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </FrameLayout>

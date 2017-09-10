@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.codingblocks.restapi.activities.PostsActivity;
+import com.codingblocks.restapi.activities.UsersActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btnPosts).setOnClickListener(this);
+        findViewById(R.id.btnUsers).setOnClickListener(this);
     }
 
     @Override
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btnPosts:
                 startActivity(new Intent(this, PostsActivity.class));
+                break;
+            case R.id.btnUsers:
+                startActivity(new Intent(this, UsersActivity.class));
                 break;
         }
     }
