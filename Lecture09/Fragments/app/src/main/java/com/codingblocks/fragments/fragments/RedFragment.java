@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.codingblocks.fragments.R;
 
@@ -24,7 +25,14 @@ public class RedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_red, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_red, container, false);
+        rootView.findViewById(R.id.tvFragDesc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "RED Fragment Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return rootView;
     }
 
 }
