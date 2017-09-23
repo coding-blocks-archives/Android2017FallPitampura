@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
                 pi
         );
 
+        //To cancel
+        am.cancel(pi);
+
 
     }
 }
