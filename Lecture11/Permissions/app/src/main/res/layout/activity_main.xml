@@ -21,15 +21,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="READ"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="63dp" />
+        tools:layout_editor_absoluteY="63dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SAVE"
-        tools:layout_editor_absoluteX="230dp"
-        tools:layout_editor_absoluteY="63dp" />
+        tools:layout_editor_absoluteY="63dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
