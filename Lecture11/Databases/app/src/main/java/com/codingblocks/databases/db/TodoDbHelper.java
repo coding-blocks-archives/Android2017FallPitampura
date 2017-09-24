@@ -12,7 +12,7 @@ import com.codingblocks.databases.db.tables.TodoTable;
 
 public class TodoDbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "todo.db";
-    public static final int DB_VER = 1;
+    public static final int DB_VER = 2;
 
 
 
@@ -26,7 +26,11 @@ public class TodoDbHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVer, int newVer) {
+
+        if (oldVer == 1 && newVer == 2) {
+            db.execSQL(TodoTable.CMD_UPD_1_2);
+        }
 
     }
 }

@@ -20,15 +20,24 @@ public class TodoTable {
     public interface Columns {
         String ID = "id";
         String TASK = "task";
+        String DONE = "done";
     }
 
     public static final String CMD_CREATE =
             CMD_CREATE_TABLE_INE + TABLE_NAME +
                     LBR +
                     Columns.ID + TYPE_INT + TYPE_PK + TYPE_AI + COMMA +
-                    Columns.TASK + TYPE_TEXT +
+                    Columns.TASK + TYPE_TEXT + COMMA +
+                    Columns.DONE + TYPE_BOOL +
                     RBR +
                     SEMI;
+    public static final String CMD_UPD_1_2 =
+            CMD_ALTER_TABLE + TABLE_NAME +
+                    CMD_ADD_COLUMN +
+                    Columns.DONE + TYPE_BOOL +
+                    SEMI;
+
+
     public static ArrayList<Todo> getAllTodos (SQLiteDatabase db) {
         ArrayList<Todo> todos = new ArrayList<>();
 
@@ -43,12 +52,13 @@ public class TodoTable {
         );
         int colForId = c.getColumnIndex(Columns.ID);
         int colForTask = c.getColumnIndex(Columns.TASK);
+        int colForDone = c.getColumnIndex(Columns.DONE);
         while (c.moveToNext()) {
             todos.add(
                     new Todo(
                             c.getInt(colForId),
                             c.getString(colForTask),
-                            false
+                            c.getInt(colForDone) != 0
                     )
             );
         }
@@ -58,6 +68,7 @@ public class TodoTable {
     public static long insertTodo (SQLiteDatabase db, Todo todo) {
         ContentValues todoData = new ContentValues();
         todoData.put(Columns.TASK, todo.getTask());
+        todoData.put(Columns.DONE, todo.isDone());
         return db.insert(
                 TABLE_NAME,
                 null,
