@@ -1,13 +1,14 @@
 package com.codingblocks.mediaplayer
 
 import android.media.MediaPlayer
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.MediaController
 import kotlinx.android.synthetic.main.activity_main.*
 
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +16,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        videoView.setVideoURI(Uri.parse(
+                "android.resource://$packageName/${R.raw.samplevideo}"
+        ))
+        videoView.start()
+        videoView.setMediaController(MediaController(this))
+
         val mp = MediaPlayer.create(this, R.raw.crowd)
+        /*
+        mp.setOnPreparedListener(new OnPreparedListener () {
+            @Override
+            void onPrepared (MediaPlayer p) {
+                p.start()
+            }
+        })
+         */
 
         btnPlay.setOnClickListener({
             Log.d("mp", "play")
