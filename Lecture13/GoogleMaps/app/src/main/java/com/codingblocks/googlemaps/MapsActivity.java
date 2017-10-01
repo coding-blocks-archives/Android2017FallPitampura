@@ -17,8 +17,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 public class MapsActivity extends AppCompatActivity implements
         OnMapReadyCallback, LocationListener {
@@ -55,7 +57,9 @@ public class MapsActivity extends AppCompatActivity implements
 
     void putMarker (LatLng point) {
         mMap.addMarker(new MarkerOptions().position(point).title("We are here"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 12.0f));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(point, 12.0f));
+//        CircleOptions co = new CircleOptions().;
+//        mMap.addCircle(co);
     }
 
 
