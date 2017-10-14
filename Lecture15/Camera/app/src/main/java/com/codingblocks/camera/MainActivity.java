@@ -13,7 +13,8 @@ import android.widget.Button;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback {
+public class MainActivity extends AppCompatActivity
+        implements SurfaceHolder.Callback, Camera.PictureCallback {
     SurfaceView surfaceView;
     SurfaceHolder surfaceHolder;
     Button btnPreview, btnCapture;
@@ -33,6 +34,13 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             public void onClick(View view) {
                 camera.startPreview();
                 camera.setDisplayOrientation(90);
+            }
+        });
+
+        btnCapture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                camera.takePicture(null, MainActivity.this, MainActivity.this);
             }
         });
 
@@ -75,10 +83,14 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             return;
         }
 
+        restartPreview();
+
+    }
+
+    void restartPreview () {
         try {
             camera.stopPreview();
         } catch ( Exception e) {}
-
         try {
             camera.setPreviewDisplay(surfaceHolder);
             switch (getWindowManager().getDefaultDisplay().getRotation()) {
@@ -105,5 +117,12 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
 
+    }
+
+    @Override
+    public void onPictureTaken(byte[] bytes, Camera camera) {
+        if (bytes != null)
+        Log.d("SIZE", "onPictureTaken: " + bytes.length);
+        restartPreview();
     }
 }
