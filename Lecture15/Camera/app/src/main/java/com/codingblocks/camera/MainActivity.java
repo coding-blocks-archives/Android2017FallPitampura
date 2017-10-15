@@ -19,11 +19,16 @@ public class MainActivity extends AppCompatActivity
     SurfaceHolder surfaceHolder;
     Button btnPreview, btnCapture;
     Camera camera;
+    String b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (savedInstanceState != null) {
+            b = savedInstanceState.getString("a");
+        }
 
         surfaceView = (SurfaceView) findViewById(R.id.svCamPrev);
         btnCapture = (Button) findViewById(R.id.btnCapture);
@@ -124,5 +129,11 @@ public class MainActivity extends AppCompatActivity
         if (bytes != null)
         Log.d("SIZE", "onPictureTaken: " + bytes.length);
         restartPreview();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("a", "b");
+        super.onSaveInstanceState(outState);
     }
 }
