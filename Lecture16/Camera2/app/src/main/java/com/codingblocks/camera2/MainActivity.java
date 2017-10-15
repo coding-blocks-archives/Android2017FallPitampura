@@ -62,7 +62,11 @@ public class MainActivity extends AppCompatActivity implements CameraDevice.Stat
             @Override
             public void onClick(View v) {
                 if (ourCamera != null) {
-                    takePhoto();
+                    try {
+                        takePhoto();
+                    } catch (CameraAccessException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     Toast.makeText(MainActivity.this, "Camera not yet ready", Toast.LENGTH_SHORT).show();
                 }
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements CameraDevice.Stat
                             session.capture(
                                     capReq,
                                     new CameraCaptureSession.CaptureCallback() {
+
                                         @Override
                                         public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
                                             // result = this is the photo
