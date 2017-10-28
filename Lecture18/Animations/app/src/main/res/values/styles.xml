@@ -11,8 +11,15 @@
         <item name="android:windowActivityTransitions">true</item>
 
         <!-- specify enter and exit transitions -->
-        <item name="android:windowEnterTransition">@android:transition/slide_right</item>
-        <item name="android:windowExitTransition">@android:transition/slide_left</item>
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
+
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/shared_image
+        </item>
+        <item name="android:windowSharedElementExitTransition">
+            @transition/shared_image
+        </item>
 
 
     </style>

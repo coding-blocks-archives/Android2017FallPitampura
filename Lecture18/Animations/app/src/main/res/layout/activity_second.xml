@@ -6,5 +6,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_orange_dark"
     tools:context="com.codingblocks.animations.SecondActivity">
-
+    <ImageView
+        android:transitionName="backup"
+        android:src="@drawable/ic_backup"
+        android:id="@+id/imgBackup"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 </FrameLayout>
